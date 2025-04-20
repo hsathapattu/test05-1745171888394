@@ -1,0 +1,682 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(135deg, #FFD700, #FF4500, #008000);
+  color: #333;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  position: relative;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+}
+
+.container {
+  width: 95%;
+  max-width: 800px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+  padding: 5%;
+  margin: 20px auto;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  position: relative;
+  z-index: 1;
+  animation: fadeInContainer 1s ease-in;
+}
+
+header {
+  text-align: center;
+  padding: 3vw;
+  background: rgba(255, 69, 0, 0.8);
+  border-radius: 15px 15px 0 0;
+  animation: glow 2s infinite alternate;
+}
+
+.header-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3vw;
+  flex-wrap: wrap;
+}
+
+h1 {
+  color: white;
+  font-size: clamp(1.5rem, 5vw, 2rem);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.sun-icon, .moon-icon {
+  width: clamp(40px, 8vw, 50px);
+  height: clamp(40px, 8vw, 50px);
+  transition: transform 0.5s;
+}
+
+.sun-icon:hover, .moon-icon:hover {
+  transform: rotate(360deg);
+}
+
+.language-toggle {
+  margin-top: 2vw;
+  display: flex;
+  justify-content: center;
+  gap: 1vw;
+}
+
+.language-toggle button {
+  background: rgba(255, 215, 0, 0.8);
+  border: none;
+  padding: clamp(8px, 2vw, 10px) clamp(15px, 3vw, 20px);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
+  transition: background 0.3s, transform 0.2s;
+  backdrop-filter: blur(5px);
+  touch-action: manipulation; /* Prevent double-tap zoom */
+}
+
+.language-toggle button:hover {
+  background: rgba(255, 165, 0, 0.8);
+  transform: scale(1.05);
+}
+
+.clock {
+  background: rgba(255, 215, 0, 0.8);
+  padding: 3vw;
+  margin: 3vw 0;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(5px);
+}
+
+.clock h2 {
+  color: #FF4500;
+  font-size: clamp(1.2rem, 4vw, 1.5rem);
+}
+
+.clock p {
+  font-size: clamp(1rem, 3.5vw, 1.2rem);
+  color: #333;
+  font-weight: bold;
+}
+
+.countdown {
+  background: rgba(255, 215, 0, 0.8);
+  padding: 3vw;
+  margin: 3vw 0;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  animation: glow 2s infinite alternate;
+  backdrop-filter: blur(5px);
+}
+
+.countdown h2 {
+  color: #FF4500;
+  font-size: clamp(1.2rem, 4vw, 1.5rem);
+}
+
+.timer {
+  font-size: clamp(1.5rem, 5vw, 1.8rem);
+  color: #333;
+  margin-top: 2vw;
+}
+
+.timer span {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.5);
+  padding: 0.5vw 1vw;
+  border-radius: 6px;
+  margin: 0 0.5vw;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.timer span:hover {
+  transform: scale(1.05);
+}
+
+.schedule {
+  padding: 3vw;
+}
+
+.event {
+  background: rgba(255, 255, 255, 0.3);
+  padding: 3vw;
+  margin-bottom: 2vw;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-left: 4px solid #FF4500;
+  opacity: 0;
+  animation: fadeIn 0.5s forwards;
+  transition: transform 0.3s, box-shadow 0.3s;
+  backdrop-filter: blur(5px);
+}
+
+.event:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.event h3 {
+  color: #FF4500;
+  font-size: clamp(1.1rem, 3.5vw, 1.3rem);
+  margin-bottom: 1vw;
+}
+
+.event p {
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
+  color: #333;
+  margin: 1vw 0;
+}
+
+.sinhala {
+  font-family: 'Noto Sans Sinhala', sans-serif;
+}
+
+.tamil {
+  font-family: 'Noto Sans Tamil', sans-serif;
+}
+
+.games {
+  padding: 3vw;
+  text-align: center;
+}
+
+.games h2 {
+  color: #FF4500;
+  font-size: clamp(1.3rem, 4.5vw, 1.6rem);
+  margin-bottom: 2vw;
+}
+
+.game-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2vw;
+}
+
+.game-buttons button {
+  background: rgba(255, 215, 0, 0.8);
+  border: none;
+  padding: clamp(10px, 2.5vw, 12px) clamp(20px, 4vw, 25px);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
+  transition: background 0.3s, transform 0.2s;
+  backdrop-filter: blur(5px);
+  touch-action: manipulation;
+}
+
+.game-buttons button:hover {
+  background: rgba(255, 165, 0, 0.8);
+  transform: scale(1.05);
+}
+
+.leaderboard {
+  padding: 3vw;
+  text-align: center;
+}
+
+.leaderboard h2 {
+  color: #FF4500;
+  font-size: clamp(1.3rem, 4.5vw, 1.6rem);
+  margin-bottom: 2vw;
+}
+
+#leaderboard-list {
+  list-style: none;
+  padding: 0;
+}
+
+#leaderboard-list li {
+  background: rgba(255, 255, 255, 0.3);
+  padding: 2vw;
+  margin-bottom: 1vw;
+  border-radius: 8px;
+  font-size: clamp(0.8rem, 2.2vw, 0.9rem);
+  color: #333;
+  transition: transform 0.3s;
+}
+
+#leaderboard-list li:hover {
+  transform: translateY(-3px);
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
+}
+
+.modal-content {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 4vw;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  animation: slideIn 0.3s ease-in;
+  backdrop-filter: blur(5px);
+}
+
+.close {
+  position: absolute;
+  top: 2vw;
+  right: 3vw;
+  font-size: clamp(1.2rem, 4vw, 1.5rem);
+  cursor: pointer;
+  color: #FF4500;
+}
+
+#game-content {
+  text-align: center;
+}
+
+#game-content h3 {
+  color: #FF4500;
+  font-size: clamp(1.1rem, 3.5vw, 1.3rem);
+  margin-bottom: 2vw;
+}
+
+#game-content p {
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
+  margin-bottom: 2vw;
+}
+
+#aliyata-eha-game,
+#pora-pol-game,
+#olinda-keliya-game {
+  position: relative;
+  height: clamp(200px, 50vw, 350px);
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+#elephant {
+  position: absolute;
+  width: clamp(150px, 40vw, 250px);
+  height: clamp(150px, 40vw, 250px);
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: url('https://img.icons8.com/color/300/000000/elephant.png') no-repeat center;
+  background-size: contain;
+  animation: breathe 3s infinite;
+}
+
+#eye {
+  position: absolute;
+  width: clamp(15px, 4vw, 20px);
+  height: clamp(15px, 4vw, 20px);
+  background: #000;
+  border-radius: 50%;
+  cursor: grab;
+  touch-action: none;
+}
+
+#eye.correct {
+  background: #00FF00;
+}
+
+#timer {
+  position: absolute;
+  top: 2vw;
+  right: 2vw;
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
+  color: #FFD700;
+}
+
+#pora-pol-game {
+  background: #FFD700;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.player-lane {
+  position: relative;
+  height: clamp(80px, 20vw, 100px);
+  border-bottom: 2px dashed #FF4500;
+}
+
+.shell {
+  position: absolute;
+  width: clamp(30px, 8vw, 40px);
+  height: clamp(30px, 8vw, 40px);
+  background: url('https://img.icons8.com/color/96/000000/coconut.png') no-repeat center;
+  background-size: contain;
+  cursor: grab;
+  touch-action: none;
+}
+
+.obstacle {
+  position: absolute;
+  width: clamp(15px, 4vw, 20px);
+  height: clamp(15px, 4vw, 20px);
+  background: #8B4513;
+  border-radius: 50%;
+}
+
+.finish-line {
+  position: absolute;
+  right: 2vw;
+  top: 0;
+  width: 4px;
+  height: 100%;
+  background: #FF4500;
+}
+
+#olinda-keliya-game {
+  background: #FFF;
+  height: auto;
+  padding: 3vw;
+}
+
+#olinda-board {
+  display: grid;
+  grid-template-columns: repeat(7, clamp(30px, 8vw, 50px));
+  grid-template-rows: repeat(2, clamp(30px, 8vw, 50px));
+  gap: clamp(5px, 1vw, 8px);
+  background: #D2B48C;
+  padding: 3vw;
+  border-radius: 10px;
+  margin: 0 auto;
+  width: fit-content;
+  position: relative;
+}
+
+.hole {
+  width: 100%;
+  height: 100%;
+  background: #8B4513;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: clamp(0.7rem, 2vw, 0.9rem);
+  color: #FFF;
+  cursor: pointer;
+  transition: transform 0.3s;
+  touch-action: manipulation;
+}
+
+.hole:hover {
+  transform: scale(1.05);
+}
+
+.store {
+  position: absolute;
+  width: clamp(50px, 12vw, 70px);
+  height: clamp(30px, 8vw, 50px);
+  background: #A0522D;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: clamp(0.7rem, 2vw, 0.9rem);
+  color: #FFF;
+}
+
+#store1 {
+  left: clamp(-60px, -15vw, -80px);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#store2 {
+  right: clamp(-60px, -15vw, -80px);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#player-turn {
+  margin-top: 2vw;
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
+  color: #FF4500;
+}
+
+.seed {
+  position: absolute;
+  width: clamp(8px, 2vw hm, 10px);
+  height: clamp(8px, 2vw, 10px);
+  background: #FF4500;
+  border-radius: 50%;
+}
+
+/* Animations */
+@keyframes glow {
+  0% { box-shadow: 0 0 5px rgba(255, 69, 0, 0.5); }
+  100% { box-shadow: 0 0 15px rgba(255, 69, 0, 1); }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInContainer {
+  0% { opacity: 0; transform: scale(0.95); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideIn {
+  0% { opacity: 0; transform: translateY(-10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes sowSeed {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+
+@keyframes breathe {
+  0% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.01); }
+  100% { transform: translate(-50%, -50%) scale(1); }
+}
+
+/* Media Queries */
+@media (max-width: 600px) {
+  .container {
+    width: 98%;
+    padding: 4vw;
+    margin: 10px auto;
+  }
+
+  header {
+    padding: 4vw;
+  }
+
+  .header-content {
+    gap: 2vw;
+  }
+
+  h1 {
+    font-size: clamp(1.2rem, 4.5vw, 1.5rem);
+  }
+
+  .sun-icon, .moon-icon {
+    width: clamp(30px, 7vw, 40px);
+    height: clamp(30px, 7vw, 40px);
+  }
+
+  .language-toggle {
+    flex-direction: column;
+    gap: 2vw;
+  }
+
+  .language-toggle button {
+    width: 100%;
+    padding: clamp(10px, 3vw, 12px);
+    font-size: clamp(0.8rem, 2.2vw, 0.9rem);
+  }
+
+  .clock, .countdown, .games, .leaderboard {
+    padding: 4vw;
+    margin: 2vw 0;
+  }
+
+  .clock h2, .countdown h2, .games h2, .leaderboard h2 {
+    font-size: clamp(1rem, 3.5vw, 1.2rem);
+  }
+
+  .timer {
+    font-size: clamp(1.2rem, 4vw, 1.5rem);
+  }
+
+  .event {
+    padding: 4vw;
+    margin-bottom: 3vw;
+  }
+
+  .event h3 {
+    font-size: clamp(0.9rem, 3vw, 1.1rem);
+  }
+
+  .event p {
+    font-size: clamp(0.8rem, 2.2vw, 0.9rem);
+  }
+
+  .game-buttons {
+    flex-direction: column;
+    gap: 3vw;
+  }
+
+  .game-buttons button {
+    width: 100%;
+    padding: clamp(12px, 3.5vw, 15px);
+    font-size: clamp(0.8rem, 2.2vw, 0.9rem);
+  }
+
+  .modal-content {
+    width: 95%;
+    padding: 5vw;
+    max-height: 85vh;
+  }
+
+  #aliyata-eha-game,
+  #pora-pol-game {
+    height: clamp(150px, 45vw, 300px);
+  }
+
+  #elephant {
+    width: clamp(100px, 35vw, 200px);
+    height: clamp(100px, 35vw, 200px);
+  }
+
+  #eye {
+    width: clamp(12px, 3.5vw, 15px);
+    height: clamp(12px, 3.5vw, 15px);
+  }
+
+  .player-lane {
+    height: clamp(60px, 18vw, 80px);
+  }
+
+  .shell {
+    width: clamp(25px, 7vw, 35px);
+    height: clamp(25px, 7vw, 35px);
+  }
+
+  .obstacle {
+    width: clamp(12px, 3.5vw, 15px);
+    height: clamp(12px, 3.5vw, 15px);
+  }
+
+  #olinda-board {
+    grid-template-columns: repeat(7, clamp(25px, 7vw, 40px));
+    grid-template-rows: repeat(2, clamp(25px, 7vw, 40px));
+    gap: clamp(3px, 1vw, 5px);
+    padding: 4vw;
+  }
+
+  .hole {
+    font-size: clamp(0.6rem, 1.8vw, 0.8rem);
+  }
+
+  .store {
+    width: clamp(40px, 10vw, 60px);
+    height: clamp(25px, 7vw, 40px);
+    font-size: clamp(0.6rem, 1.8vw, 0.8rem);
+  }
+
+  #store1 {
+    left: clamp(-50px, -12vw, -60px);
+  }
+
+  #store2 {
+    right: clamp(-50px, -12vw, -60px);
+  }
+}
+
+@media (max-width: 400px) {
+  .container {
+    padding: 5vw;
+  }
+
+  h1 {
+    font-size: clamp(1rem, 4vw, 1.2rem);
+  }
+
+  .clock h2, .countdown h2, .games h2, .leaderboard h2 {
+    font-size: clamp(0.9rem, 3.2vw, 1rem);
+  }
+
+  .timer {
+    font-size: clamp(1rem, 3.5vw, 1.2rem);
+  }
+
+  .event h3 {
+    font-size: clamp(0.8rem, 2.8vw, 0.9rem);
+  }
+
+  .event p {
+    font-size: clamp(0.7rem, 2vw, 0.8rem);
+  }
+
+  #aliyata-eha-game,
+  #pora-pol-game {
+    height: clamp(120px, 40vw, 250px);
+  }
+
+  #elephant {
+    width: clamp(80px, 30vw, 150px);
+    height: clamp(80px, 30vw, 150px);
+  }
+
+  #olinda-board {
+    grid-template-columns: repeat(7, clamp(20px, 6vw, 30px));
+    grid-template-rows: repeat(2, clamp(20px, 6vw, 30px));
+  }
+
+  .hole {
+    font-size: clamp(0.5rem, 1.5vw, 0.7rem);
+  }
+
+  .store {
+    width: clamp(30px, 9vw, 50px);
+    height: clamp(20px, 6vw, 30px);
+    font-size: clamp(0.5rem, 1.5vw, 0.7rem);
+  }
+}
