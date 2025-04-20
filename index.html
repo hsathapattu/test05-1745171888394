@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Sinhala & Tamil New Year 2025</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@400;700&family=Noto+Sans+Tamil:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="header-content">
+        <img src="https://img.icons8.com/color/96/000000/sun--v1.png" alt="Sun Icon" class="sun-icon">
+        <h1>Aluth Avuruddu / Puthandu 2025</h1>
+        <img src="https://img.icons8.com/color/96/000000/moon-symbol.png" alt="Moon Icon" class="moon-icon">
+      </div>
+      <div class="language-toggle">
+        <button onclick="changeLanguage('english')">English</button>
+        <button onclick="changeLanguage('sinhala')">සිංහල</button>
+        <button onclick="changeLanguage('tamil')">தமிழ்</button>
+      </div>
+    </header>
+    <div class="clock">
+      <h2>Current Time (Sri Lanka)</h2>
+      <p id="current-time">Loading...</p>
+    </div>
+    <div class="countdown" id="countdown">
+      <h2>Next Event: <span id="next-event">Loading...</span></h2>
+      <div class="timer">
+        <span id="hours">00</span>:<span id="minutes">00</span>:<span id="seconds">00</span>
+      </div>
+    </div>
+    <div class="schedule" id="schedule">
+      <!-- Events will be dynamically added here -->
+    </div>
+    <div class="games">
+      <h2>Avurudu Games / புத்தாண்டு விளையாட்டுகள்</h2>
+      <div class="game-buttons">
+        <button onclick="openGame('aliyata-eha')">Aliyata Eha Thabeema</button>
+        <button onclick="openGame('pora-pol')">Pora Pol Gaseema</button>
+        <button onclick="openGame('olinda-keliya')">Olinda Keliya</button>
+      </div>
+    </div>
+    <div class="leaderboard">
+      <h2>Leaderboard</h2>
+      <ul id="leaderboard-list"></ul>
+    </div>
+  </div>
+  <div id="game-modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeGame()">×</span>
+      <div id="game-content"></div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
